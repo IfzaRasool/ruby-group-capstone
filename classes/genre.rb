@@ -1,8 +1,10 @@
+require 'UUID'
+
 class Genre
   attr_accessor :name
 
   def initialize(name, items)
-    @id = Random.rand(1..100)
+    @id = UUID.new.generate
     @name = name
     @items = items
   end
