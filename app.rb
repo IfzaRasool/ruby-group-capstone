@@ -1,9 +1,11 @@
 require 'colorize'
 require_relative 'modules/game'
+require_relative 'modules/author'
 require_relative 'classes/game'
 
 class App
-  include(GameModule)
+  include GameModule
+  include AuthorModule
 
   def initialize
     @options = {
@@ -12,7 +14,7 @@ class App
       '3' => 'list all movies',
       '4' => method(:list_games),
       '5' => 'list all genre',
-      '6' => 'list all authors',
+      '6' => method(:list_authors),
       '7' => 'list all sources',
       '8' => 'list all labels',
       '9' => 'add a book',
@@ -57,6 +59,20 @@ class App
       games.each do |game|
         puts "Players: #{game['multiplayer']}" \
              " - Last Played: #{game['last_played_at']} - Published: #{game['publish_date']}"
+      end
+    end
+  end
+
+  # authors
+  def list_authors
+    authors = fetch_authors
+
+    if authors.empty?
+      puts 'No Authors to be displayed'.colorize(color: :magenta)
+    else
+      puts "#{authors.count} Authors Found!".colorize(color: :magenta)
+      authors.each do |author|
+        puts "First Name: #{author['first_name']} - Last Name: #{author['last_name']}"
       end
     end
   end

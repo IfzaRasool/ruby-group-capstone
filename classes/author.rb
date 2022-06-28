@@ -1,8 +1,7 @@
 require 'UUID'
-require_relative '../item'
 
 class Author
-  attr_accessor :first_name, :last_name
+  attr_accessor :first_name, :last_name, :items
 
   def initialize(first_name, last_name)
     @id = UUID.new.generate
@@ -11,8 +10,8 @@ class Author
     @items = []
   end
 
-  def add_item(item: Item.new)
+  def add_item(item)
     @items << item
-    Item.author = self
+    item.author = self
   end
 end
