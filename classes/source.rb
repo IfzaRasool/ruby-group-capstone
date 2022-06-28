@@ -1,4 +1,4 @@
-class Genre
+class Source
   attr_accessor :name
 
   def initialize(name, items)
