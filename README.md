@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Ruby Group Capstone Project
+# Ruby Group Capstone Project - 'Things' Catalog App
 
 In this project, we create a console app that helps to keep a record of different types of things you have won: books, music albums, movies, and games. We base our app on a UML class diagram. Data is stored in JSON files and also in a database with tables structure analogical to our program's class structure. Built with RUBY | RSPEC | RUBOCOP | PostgreSQL
 
