@@ -1,30 +1,69 @@
+require 'colorize'
+require_relative 'modules/game'
+require_relative 'classes/game'
+
 class App
+  include(GameModule)
+
   def initialize
     @options = {
-      '1': 'list all books',
-      '2': 'list all music album',
-      '3': 'list all movies',
-      '4': 'list all games',
-      '5': 'list all genre',
-      '6': 'list all authors',
-      '7': 'list all sources',
-      '8': 'list all labels',
-      '9': 'add a book',
-      '11': 'add a movie',
-      '12': 'add a game',
-      '13': 'Exit'
+      '1' => 'list all books',
+      '2' => 'list all music album',
+      '3' => 'list all movies',
+      '4' => method(:list_games),
+      '5' => 'list all genre',
+      '6' => 'list all authors',
+      '7' => 'list all sources',
+      '8' => 'list all labels',
+      '9' => 'add a book',
+      '11' => 'add a movie',
+      '12' => method(:create_game),
+      '13' => method(:quit_game)
     }
   end
 
   def handle_options(input)
     if input.to_i.between?(1, 13)
-      if @options[input] == 'Exit'
-        exit(true)
-      else
-        puts @options[input]
-      end
+      @options[input].call
     else
-      puts 'Invalid Input!'
+      puts 'Invalid Input!'.colorize(color: :red)
     end
+  end
+
+  # games
+  def create_game
+    print 'Enter number of players: '
+    multiplayer = gets.chomp
+
+    print 'Enter Last Played Date format[yyyy-mm-dd]: '
+    last_played_at = gets.chomp
+
+    print 'Enter Date Published format[yyyy-mm-dd]: '
+    publish_date = gets.chomp
+
+    new_game = Game.new(multiplayer, last_played_at, publish_date)
+    add_game(new_game)
+    puts 'Game created successfully'.colorize(color: :light_green)
+  rescue StandardError
+    puts 'Cannot create game, check your Input format'.colorize(color: :light_red)
+  end
+
+  def list_games
+    games = fetch_games
+    if games.empty?
+      puts 'No Games to be displayed'.colorize(color: :magenta)
+    else
+      puts "#{games.count} Games Found!".colorize(color: :magenta)
+      games.each do |game|
+        puts "Players: #{game['multiplayer']}" \
+             " - Last Played: #{game['last_played_at']} - Published: #{game['publish_date']}"
+      end
+    end
+  end
+
+  # quit game
+  def quit_game
+    puts 'Application exited successfully!'.colorize(color: :light_blue)
+    exit(true)
   end
 end
