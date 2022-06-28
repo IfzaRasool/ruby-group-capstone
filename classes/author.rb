@@ -1,14 +1,18 @@
+require 'UUID'
+require_relative '../item'
+
 class Author
   attr_accessor :first_name, :last_name
 
-  def initialize(first_name, last_name, items)
-    @id = Random.rand(1..100)
+  def initialize(first_name, last_name)
+    @id = UUID.new.generate
     @first_name = first_name
     @last_name = last_name
-    @items = items
+    @items = []
   end
 
-  def add_item
-    # method add item
+  def add_item(item: Item.new)
+    @items << item
+    Item.author = self
   end
 end

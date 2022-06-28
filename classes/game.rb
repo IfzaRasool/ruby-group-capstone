@@ -12,6 +12,6 @@ class Game < Item
   private
 
   def can_be_archived?
-    # method
+    true if can_be_archived? && @last_played_at > 2
   end
 end
