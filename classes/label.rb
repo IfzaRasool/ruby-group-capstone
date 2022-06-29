@@ -1,14 +1,17 @@
+require 'UUID'
+
 class Label
   attr_accessor :title, :color
 
-  def initialize(title, color, items)
-    @id = Random.rand(1..100)
+  def initialize(title, color)
+    @id = UUID.new.generate(1..100)
     @title = title
     @color = color
-    @items = items
+    @items = []
   end
 
-  def add_item
-    # method add item
+  def add_item(item)
+    @items << item
+    item.label = self
   end
 end
