@@ -50,6 +50,25 @@ class App
     puts 'Cannot create game, check your Input format'.colorize(color: :light_red)
   end
 
+  # movies
+
+  def create_movie
+    print 'Enter the movie name '
+    movies = gets.chomp
+
+    print 'Enter the Date published with Date format[yyyy-mm-dd]: '
+    date_published = gets.chomp
+
+    print 'Please indicate if this is a Silent Movie: '
+    silent_movie = gets.chomp
+    silent_movie = y_n { 'Silent? [Y/N]:' }
+    new_movie = Movie.new(movies, date_published, silent_movie)
+    add_movie(new_movie)
+    puts 'Movie created successfully'.colorize(color: :light_green)
+  rescue StandardError
+    puts 'Cannot create movie, check your Input format'.colorize(color: :light_red)
+  end
+
   def list_games
     games = fetch_games
     if games.empty?
@@ -58,8 +77,21 @@ class App
       puts "#{games.count} Games Found!".colorize(color: :magenta)
       games.each do |game|
         puts "Players: #{game['multiplayer']}" \
-             " - Last Played: #{game['last_played_at']} - Published: #{game['publish_date']}"
+             "-Last Played: #{game['last_played_at']} - Published: #{game['publish_date']}"
       end
+    end
+  end
+
+  # list movies
+  def list_all_movies
+    if movies.empty?
+      puts 'Woops! There are currently no movies in the list.'
+    else
+      puts
+      movies.each do |movie|
+        puts "Title: '#{movie.name}, Published_Date: #{movie.publish_date}, Silent: #{movie.silent}"
+      end
+      puts ''
     end
   end
 
