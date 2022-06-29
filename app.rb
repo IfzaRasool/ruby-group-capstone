@@ -52,8 +52,8 @@ class App
     new_game = Game.new(multiplayer, last_played_at, publish_date)
     add_game(new_game)
     puts 'Game created successfully'.colorize(color: :light_green)
-    # rescue StandardError
-    #   puts 'Cannot create game, check your Input format'.colorize(color: :light_red)
+    rescue StandardError
+      puts 'Cannot create game, check your Input format'.colorize(color: :light_red)
   end
 
   def list_games

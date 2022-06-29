@@ -1,4 +1,4 @@
-require_relative 'UUID'
+require 'UUID'
 
 class Genre
   attr_accessor :name
