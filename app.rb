@@ -58,7 +58,7 @@ class App
       puts "#{games.count} Games Found!".colorize(color: :magenta)
       games.each do |game|
         puts "Players: #{game['multiplayer']}" \
-             " - Last Played: #{game['last_played_at']} - Published: #{game['publish_date']}"
+             "-Last Played: #{game['last_played_at']} - Published: #{game['publish_date']}"
       end
     end
   end
