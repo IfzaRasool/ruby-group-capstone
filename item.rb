@@ -15,7 +15,7 @@ class Item
   end
 
   def move_to_archive
-    @archived == true if can_be_archived?
+    @archived = true if can_be_archived? == true
   end
 
   private :can_be_archived?
