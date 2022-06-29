@@ -37,7 +37,7 @@ module MovieModule
     date_published = gets.chomp
 
     print 'Please indicate if this is a Silent Movie(y/n): '
-    silent = gets.chomp.downcase == 'y' ? true : false
+    silent = gets.chomp.downcase == 'y'
 
     new_movie = Movie.new(name, date_published, silent)
     add_movie(new_movie)

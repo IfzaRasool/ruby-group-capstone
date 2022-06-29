@@ -3,5 +3,10 @@
     "name": "man vs bee",
     "publish_date": "2022-06-01",
     "silent": true
+  },
+  {
+    "name": "the future",
+    "publish_date": "2000-01-01",
+    "silent": false
   }
 ]
