@@ -1,4 +1,5 @@
 require 'json'
+require_relative '../classes/movie'
 
 module MovieModule
   def add_movie(movie)
@@ -10,22 +11,51 @@ module MovieModule
 
     movies = JSON.parse(File.read(movie_storage)) if File.exist?(movie_storage)
     movies << new_movie
-    File.write(movie_storage,JSON.pretty_generate(movies))
+    File.write(movie_storage, JSON.pretty_generate(movies))
   end
 
-  
+  def load_movies
+    movie_storage = './json/movies.json'
+    movies = []
 
-  # def load_movies
-  #   file = 'movies.json'
-  #   if File.exist? file
-  #     File.open(file)
-  #     JSON.parse(File.read(file)).map do |movie|
-  #       new_movie = Movie.new(movi['publish_date'], ['silent'], movie['archived'], movie['name'])
-  #       new_movie.id = movie['id']
-  #       @movies.push(new_movie)
-  #     end
-  #   else
-  #     File.new(file, 'w') []
-  #   end
-  # end
+    if File.exist?(movie_storage)
+      if File.empty?(movie_storage)
+        movies
+      else
+        JSON.parse(File.read(movie_storage))
+      end
+    else
+      movies
+    end
+  end
+
+  def create_movie
+    print 'Enter the movie name: '
+    name = gets.chomp
+
+    print 'Enter the Date published with Date format[yyyy-mm-dd]: '
+    date_published = gets.chomp
+
+    print 'Please indicate if this is a Silent Movie(y/n): '
+    silent = gets.chomp.downcase == 'y' ? true : false
+
+    new_movie = Movie.new(name, date_published, silent)
+    add_movie(new_movie)
+    puts 'Movie created successfully'.colorize(color: :light_green)
+  rescue StandardError
+    puts 'Cannot create movie, check your Input format'.colorize(color: :light_red)
+  end
+
+  def list_all_movies
+    movies = load_movies
+
+    if movies.empty?
+      puts 'Woops! There are currently no movies in the list.'.colorize(color: :magenta)
+    else
+      puts "#{movies.count} Movies Found!".colorize(color: :magenta)
+      movies.each do |movie|
+        puts "Title: '#{movie['name']}, Published Date: #{movie['publish_date']}, Silent: #{movie['silent']}"
+      end
+    end
+  end
 end

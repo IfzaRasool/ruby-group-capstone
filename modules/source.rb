@@ -1,37 +1,43 @@
 require 'json'
 
 module SourceModule
-  def create_source
-    print 'Source:'
-    source_name = gets.chomp
-    Source.new(source_name)
+  def add_source(source)
+    source_storage = './json/sources.json'
+    sources = []
+    new_source = {
+      'name' => source.name
+    }
+
+    sources = JSON.parse(File.read(source_storage)) if File.exist?(source_storage)
+    sources << new_source
+    File.write(source_storage, JSON.pretty_generate(sources))
   end
 
   def list_all_sources
-    @sources = []
-    if @sources.any?
-      puts ''
-      puts 'Here are the sources: '
-      @sources.each_with_index { |source, index| puts "#{index}) ID: #{source.id}, Name: '#{source.name}'" }
-      puts ''
+    source_storage = './json/sources.json'
+    sources = []
+
+    if File.exist?(source_storage)
+      if File.empty?(source_storage)
+        sources
+      else
+        JSON.parse(File.read(source_storage))
+      end
     else
-      puts 'No source details to show'
+      sources
     end
   end
 
-  def load_sources
-    file = 'sources.json'
+  def list_sources
+    sources = list_all_sources
 
-    if File.exist? file
-      File.open(file)
-      JSON.parse(File.read(file)).map do |source|
-        new_source = Source.new(source['name'])
-        new_source.id = source['id']
-        new_source.items = source['items']
-        @sources.push(new_source)
-      end
+    if sources.empty?
+      puts 'Woops! There are currently no sources in the list.'.colorize(color: :magenta)
     else
-      File.new(file, 'w') []
+      puts "#{sources.count} Sources Found!".colorize(color: :magenta)
+      sources.each do |source|
+        puts "Title: '#{source.name}"
+      end
     end
   end
 end

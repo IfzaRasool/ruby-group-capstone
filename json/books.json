@@ -10,5 +10,11 @@
     "publisher": "amazon",
     "cover_state": "hardcover",
     "publish_date": "2022-06-01"
+  },
+  {
+    "name": "matilda",
+    "publisher": "kindle",
+    "cover_state": "ebook",
+    "publish_date": "2014-01-01"
   }
 ]

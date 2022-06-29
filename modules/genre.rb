@@ -28,4 +28,16 @@ module GenreModule
       genres
     end
   end
+
+  def list_genres
+    genres = fetch_genres
+    if genres.empty?
+      puts 'No Genres to be displayed'.colorize(color: :magenta)
+    else
+      print 'The genres are : '
+      genres.each do |genre|
+        print genre.name
+      end
+    end
+  end
 end
