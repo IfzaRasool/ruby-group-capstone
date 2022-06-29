@@ -1,15 +1,16 @@
-require 'UUID'
+require_relative 'UUID'
 
 class Genre
   attr_accessor :name
 
-  def initialize(name, items)
+  def initialize(name)
     @id = UUID.new.generate
     @name = name
-    @items = items
+    @items = []
   end
 
-  def add_item
-    # method add item
+  def add_item(item)
+    @items << item
+    item.genre = self
   end
 end
