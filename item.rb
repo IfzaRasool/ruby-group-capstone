@@ -1,8 +1,7 @@
 require 'UUID'
 
 class Item
-  attr_accessor :publish_date, :archived
-  attr_reader :label, :genre, :author, :source
+  attr_accessor :publish_date, :archived, :label, :genre, :author, :source
 
   def initialize(publish_date, archived: false)
     @id = UUID.new.generate
