@@ -1,4 +1,5 @@
 require_relative '../classes/music_album'
+require 'UUID'
 
 describe MusicAlbum do
   context 'Music Album ' do

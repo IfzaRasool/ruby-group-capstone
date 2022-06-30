@@ -1,4 +1,5 @@
 require 'date'
+require 'UUID'
 require_relative '../classes/book'
 
 describe Book do
