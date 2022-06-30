@@ -2,6 +2,7 @@ require 'UUID'
 
 class Genre
   attr_accessor :name
+  attr_reader :items
 
   def initialize(name)
     @id = UUID.new.generate
