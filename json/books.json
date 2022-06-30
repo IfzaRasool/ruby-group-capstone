@@ -16,5 +16,11 @@
     "publisher": "kindle",
     "cover_state": "ebook",
     "publish_date": "2014-01-01"
+  },
+  {
+    "name": "cheap thrills",
+    "publisher": "sia",
+    "cover_state": "softcopy",
+    "publish_date": "2000-12-12"
   }
 ]

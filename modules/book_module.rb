@@ -42,7 +42,7 @@ module BooksDataController
     print 'Enter Cover state: '
     cover_state = gets.chomp
 
-    print 'Enter date published: '
+    print 'Enter date published [yyyy-mm-dd]: '
     publish_date = gets.chomp
 
     new_book = Book.new(name, publisher, cover_state, publish_date)
