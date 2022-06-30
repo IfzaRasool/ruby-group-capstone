@@ -2,9 +2,10 @@ require 'UUID'
 
 class Label
   attr_accessor :title, :color
+  attr_reader :items
 
   def initialize(title, color)
-    @id = UUID.new.generate(1..100)
+    @id = UUID.new.generate
     @title = title
     @color = color
     @items = []
