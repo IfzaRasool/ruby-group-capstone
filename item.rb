@@ -1,11 +1,11 @@
-require 'UUID'
+require 'securerandom'
 require 'date'
 
 class Item
   attr_accessor :publish_date, :archived, :label, :genre, :author, :source
 
   def initialize(publish_date, archived: false)
-    @id = UUID.new.generate
+    @id = SecureRandom.uuid
     @publish_date = Date.parse(publish_date)
     @archived = archived
   end
