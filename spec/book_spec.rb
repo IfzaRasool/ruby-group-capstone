@@ -25,7 +25,7 @@ describe Book do
     end
 
     it 'should detect the book publish_date' do
-      bk = Book.new('name', 'author', 'cover_state', Date.parse('2018-05-12'))
+      bk = Book.new('name', 'author', 'cover_state','2018-05-12')
       expect(bk.publish_date).to eq(Date.parse('2018-05-12'))
     end
   end
