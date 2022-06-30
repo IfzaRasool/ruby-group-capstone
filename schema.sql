@@ -58,3 +58,20 @@ CREATE TABLE authors(
     last_name VARCHAR(100),
     PRIMARY KEY(id)
 )
+
+-- CREATE TABLE labels 
+CREATE TABLE labels (
+    id VARCHAR(100) NOT NULL,
+    title VARCHAR(100),
+    color VARCHAR(100),
+    PRIMARY KEY(id)
+);
+
+-- CREATE TABLE books 
+CREATE TABLE books (
+    id VARCHAR(100) NOT NULL,
+    title VARCHAR(100),
+    publisher VARCHAR(100),
+    cover_state VARCHAR(100),
+    FOREIGN KEY(id) REFERENCES item(id)
+);
