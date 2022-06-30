@@ -1,4 +1,4 @@
-require 'UUID'
+require 'uuid'
 
 class Author
   attr_accessor :first_name, :last_name, :items

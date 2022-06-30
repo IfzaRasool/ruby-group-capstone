@@ -1,6 +1,5 @@
 require_relative '../classes/source'
 require_relative '../classes/movie'
-require 'UUID'
 
 describe Source do
   context 'Test source class' do

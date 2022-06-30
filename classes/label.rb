@@ -1,4 +1,4 @@
-require 'UUID'
+require 'uuid'
 
 class Label
   attr_accessor :title, :color

@@ -1,5 +1,4 @@
 require_relative '../classes/movie'
-require 'UUID'
 
 describe Movie do
   context 'Test movie class' do

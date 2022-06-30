@@ -1,4 +1,4 @@
-require 'UUID'
+require 'uuid'
 
 class Source
   attr_accessor :name
