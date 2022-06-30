@@ -7,6 +7,10 @@ In this project, we create a console app that helps to keep a record of differen
 Enjoy!
 
 
+## Project Demo Video
+
+[Group Project Demo Video](https://drive.google.com/file/d/19tPP1qhyd7-Fio1a_P2N3KyrjA9jMl4I/view?usp=sharing)
+
 ## Built With
 
 - Ruby
@@ -49,7 +53,12 @@ Install Rubocop
 
 ## Usage
 
-  Navigate to the file `main.rb`.
+  - Navigate to the file directory `ruby-group-capstone` in your favorite terminal application
+  - Type in the command  `ruby main.rb` to start the 'Things' Catalog App
+  - Read through the list of options presented and type in the number of your desired action
+  
+  
+  Have fun cataloging your own 'Things' with our Ruby 'Things' Catalog Console App!
 
 
 ## Testing
@@ -58,8 +67,6 @@ Install Rubocop
   `gem install rspec`
   
   Then within the projects working directory run test using the command `rspec` in the terminal.
-
-  Have fun viewing  our Ruby Capstone Console App.
 
 
 ## Author1
