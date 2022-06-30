@@ -1,11 +1,11 @@
-require 'uuid'
+require 'securerandom'
 
 class Label
   attr_accessor :title, :color
   attr_reader :items
 
   def initialize(title, color)
-    @id = UUID.new.generate
+    @id = SecureRandom.uuid
     @title = title
     @color = color
     @items = []

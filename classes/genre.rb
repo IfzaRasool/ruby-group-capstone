@@ -1,11 +1,11 @@
-require 'uuid'
+require 'securerandom'
 
 class Genre
   attr_accessor :name
   attr_reader :items
 
   def initialize(name)
-    @id = UUID.new.generate
+    @id = SecureRandom.uuid
     @name = name
     @items = []
   end
