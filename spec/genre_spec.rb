@@ -16,7 +16,7 @@ describe Genre do
       expect(genre.items[0]).to eq music_album
     end
 
-    it 'should check the genre name' do 
+    it 'should check the genre name' do
       expect(genre.name).to eq('rock')
     end
   end

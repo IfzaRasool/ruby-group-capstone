@@ -3,7 +3,7 @@ require_relative '../classes/music_album'
 describe MusicAlbum do
   context 'Music Album ' do
     music_album = MusicAlbum.new('2002/12/12', true)
-    it 'on the spotify return true' do 
+    it 'on the spotify return true' do
       expect(music_album.on_spotify).to equal(true)
     end
 
